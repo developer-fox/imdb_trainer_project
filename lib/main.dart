@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imdb_trainer_project/modules/screens/main_screen.dart';
 import "core/constants.dart" as constants;
 
@@ -18,10 +19,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
+        canvasColor: Colors.black87,
         primarySwatch: Colors.blue,
       ),
-      home: const  MyHomePage(),
+      home:  MyHomePage(),
     );
   }
 }
