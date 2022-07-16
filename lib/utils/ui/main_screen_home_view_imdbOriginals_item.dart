@@ -3,14 +3,14 @@ import "package:flutter/material.dart";
 
 import "../../core/constants.dart" as constants;
 
-class MainScreenHomeViewFeaturedVideoWidget extends StatefulWidget {
+class MainScreenHomeViewImdbOriginalsItem extends StatefulWidget {
 
   String photoUrl;
   String description;
   int seconds;
 
 
-  MainScreenHomeViewFeaturedVideoWidget({
+  MainScreenHomeViewImdbOriginalsItem({
     Key? key,
     required this.photoUrl,
     required this.description,
@@ -18,10 +18,10 @@ class MainScreenHomeViewFeaturedVideoWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MainScreenHomeViewFeaturedVideoWidget> createState() => _MainScreenHomeViewFeaturedVideoWidget();
+  State<MainScreenHomeViewImdbOriginalsItem> createState() => _MainScreenHomeVieImdbOriginalsItem();
 }
 
-class _MainScreenHomeViewFeaturedVideoWidget extends State<MainScreenHomeViewFeaturedVideoWidget> {
+class _MainScreenHomeVieImdbOriginalsItem extends State<MainScreenHomeViewImdbOriginalsItem> {
   @override
   Widget build(BuildContext context) {
     
@@ -34,10 +34,11 @@ class _MainScreenHomeViewFeaturedVideoWidget extends State<MainScreenHomeViewFea
 
             // background images
               Container(
-              height: constants.scaler(context, 32).width,
+              height: constants.scaler(context, 45).width,
+              width: constants.scaler(context,70).width,
               child: Padding(
                 padding: const EdgeInsets.all(10),
-                child: Image.network(widget.photoUrl, fit: BoxFit.contain) 
+                child: Image.network(widget.photoUrl, fit: BoxFit.fitWidth) 
                  ,
               ),
             ),
@@ -45,7 +46,7 @@ class _MainScreenHomeViewFeaturedVideoWidget extends State<MainScreenHomeViewFea
 
             // photos icon ant text
             Padding(
-              padding:  EdgeInsets.only(top: constants.scaler(context,22).width, left: constants.scaler(context, 5).width),
+              padding:  EdgeInsets.only(top: constants.scaler(context,33).width, left: constants.scaler(context, 5).width),
               child: Container(
                     width: constants.scaler(context,22).width,
                     child: Row(
@@ -64,7 +65,9 @@ class _MainScreenHomeViewFeaturedVideoWidget extends State<MainScreenHomeViewFea
           // description
           Padding(
             padding:  EdgeInsets.only(left : 16),
-            child: Text(widget.description, style: constants.appTextFont(style: TextStyle(color: Colors.white, fontSize: 12.4,))),
+            child: Container(
+              width: constants.scaler(context,64).width,
+              child: Text(widget.description, style: constants.appTextFont(style: TextStyle(color: Colors.white, fontSize: 12.4,)))),
           )
 
 
