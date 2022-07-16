@@ -2,6 +2,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_bestBoxOffice_item.dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_carousel_slider_item_widget.dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_featured_photos_widget.dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_featureds_list_widget.dart';
@@ -9,6 +10,7 @@ import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_imdbOriginal
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_topRated_item.dart';
 import '../../utils/ui/main_screen_home_view_viewersFavourite_item .dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_watchlist_item.dart';
+import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_explore_broadcasts_item.dart';
 import '../../core/constants.dart' as constants;
 import '../../utils/ui/main_screen_home_view_featured_video_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +36,9 @@ class _MainScreenHomeViewState extends State<MainScreenHomeView> {
           TopRated(),
           ViewersFavourite(),
           WatchOnImdbForFree(),
+          ExploreBroadCasts(),
+          ExploreMoviesAndTvPrograms(),
+          BestBoxOffice(),
         ],
       ),
     );
@@ -472,3 +477,272 @@ class _WatchOnImdbForFreeState extends State<WatchOnImdbForFree> {
     );      
   }
 }
+
+
+// explore broadcasts
+class ExploreBroadCasts extends StatefulWidget {
+  const ExploreBroadCasts({Key? key}) : super(key: key);
+
+  @override
+  State<ExploreBroadCasts> createState() => _ExploreBroadCastsState();
+}
+
+class _ExploreBroadCastsState extends State<ExploreBroadCasts> {
+  @override
+  Widget build(BuildContext context) {
+      return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        Padding(
+          padding:  EdgeInsets.symmetric(vertical: 16, horizontal:16),
+          child: Text("Yayınları keşfet", style: constants.appTextFont(style: TextStyle(fontSize: 24,color: constants.appYellow)),),
+        ),
+
+        Container(
+          color: constants.appMediumBlack,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 12, left: 12, right: 12),
+            child: _exploreBroadCastsTabBar(context),
+          ),
+        ),
+
+      ],
+
+    );     
+  }
+}
+
+// explore broadcasts tabBar
+Widget _exploreBroadCastsTabBar (BuildContext context){
+
+  return DefaultTabController(
+    length: 1,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          child: PreferredSize(
+            preferredSize: Size.fromHeight(30),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: TabBar(
+                isScrollable: true,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: constants.appYellow,
+                indicatorWeight: 4,
+                tabs: const [
+                  Tab(text: "Prime Video",),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        SizedBox(
+          height: constants.scaler(context,100).width,
+          child: TabBarView(
+            children: [
+              Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical:16),
+                  child: SizedBox(
+                    height: constants.scaler(context, 90).width,
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+
+                        MainScreenHomeViewExploreBroadcastsItem(movieName: "lorem ipsum dolor sit amet", stars: 7.6, backgroundImageUrl: constants.moviePostImagePlaceHolder, years: {"start": 1992, "end": 1996}, episodes: 56),
+                        MainScreenHomeViewExploreBroadcastsItem(movieName: "lorem ipsum dolor sit amet", stars: 7.6, backgroundImageUrl: constants.moviePostImagePlaceHolder, years: {"start": 1992, "end": 1996}, episodes: 56),
+                        MainScreenHomeViewExploreBroadcastsItem(movieName: "lorem ipsum dolor sit amet", stars: 7.6, backgroundImageUrl: constants.moviePostImagePlaceHolder, years: {"start": 1992, "end": 0}, episodes: 56),
+                        MainScreenHomeViewExploreBroadcastsItem(movieName: "lorem ipsum dolor sit amet", stars: 7.6, backgroundImageUrl: constants.moviePostImagePlaceHolder, years: {"start": 1992, "end": 1996}, episodes: 56),
+                      ],
+                    ),
+                  ),
+                )
+
+              ],
+            ),
+
+            ],
+          ),
+        ),
+
+      ],
+    ),
+  );
+
+
+}
+
+
+// explore movies and tv programs
+class ExploreMoviesAndTvPrograms extends StatefulWidget {
+  const ExploreMoviesAndTvPrograms({Key? key}) : super(key: key);
+
+  @override
+  State<ExploreMoviesAndTvPrograms> createState() => _ExploreMoviesAndTvProgramsState();
+}
+
+class _ExploreMoviesAndTvProgramsState extends State<ExploreMoviesAndTvPrograms> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // title
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Filmleri ve TV programlarını keşfet", style: constants.appTextFont(style: TextStyle(color:constants.appYellow, fontSize: 24)),),
+        ),
+
+        Container(
+          color: constants.appMediumBlack,
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 30,
+                      child: VerticalDivider(color: constants.appYellow, width:4, thickness:4)),
+
+                    // title
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text("Sinemalarda", style: constants.appTextFont(style: TextStyle(color: Colors.white, fontSize: 18)),),
+                    ),
+
+                    Spacer(),
+
+                    TextButton(
+                      onPressed: (){},
+                       child: Text("TÜMÜNÜ GÖSTER", style: constants.appTextFont(style: TextStyle(color: Colors.lightBlue))))
+
+
+                  ],
+                ),
+
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: SizedBox(
+                    height: constants.scaler(context, 90).width,
+                    child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        MainScreenHomeViewWatchlistItem(movieName: "lorem ipsum dolor sit amet, convecta",type: "cinema", stars: 6.9, yearOfBuilt: 2022, certificateCode: "PG-13", countOfMinutes: 118, backgroundImageUrl: constants.moviePostImagePlaceHolder),
+                        MainScreenHomeViewWatchlistItem(movieName: "lorem ipsum dolor sit amet, convecta",type: "cinema", stars: 6.9, yearOfBuilt: 2022, certificateCode: "PG-13", countOfMinutes: 118, backgroundImageUrl: constants.moviePostImagePlaceHolder),
+                        MainScreenHomeViewWatchlistItem(movieName: "lorem ipsum dolor sit amet, convecta",type: "cinema", stars: 6.9, yearOfBuilt: 2022, certificateCode: "PG-13", countOfMinutes: 118, backgroundImageUrl: constants.moviePostImagePlaceHolder),
+                        MainScreenHomeViewWatchlistItem(movieName: "lorem ipsum dolor sit amet, convecta",type: "cinema", stars: 6.9, yearOfBuilt: 2022, certificateCode: "PG-13", countOfMinutes: 118, backgroundImageUrl: constants.moviePostImagePlaceHolder),
+                        MainScreenHomeViewWatchlistItem(movieName: "lorem ipsum dolor sit amet, convecta",type: "cinema", stars: 6.9, yearOfBuilt: 2022, certificateCode: "PG-13", countOfMinutes: 118, backgroundImageUrl: constants.moviePostImagePlaceHolder),
+                        MainScreenHomeViewWatchlistItem(movieName: "lorem ipsum dolor sit amet, convecta",type: "cinema", stars: 6.9, yearOfBuilt: 2022, certificateCode: "PG-13", countOfMinutes: 118, backgroundImageUrl: constants.moviePostImagePlaceHolder),
+                      ],
+                    ),
+                  ),
+                )
+
+              ],
+            ),
+          ),
+        )
+
+      ],
+
+    );    
+  }
+}
+
+
+// best box office
+class BestBoxOffice extends StatefulWidget {
+  const BestBoxOffice({Key? key}) : super(key: key);
+
+  @override
+  State<BestBoxOffice> createState() => _BestBoxOfficeState();
+}
+
+class _BestBoxOfficeState extends State<BestBoxOffice> {
+  @override
+  Widget build(BuildContext context) {
+      return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        Container(
+          width: constants.scaler(context,100).width,
+          height: 20,
+          color: Colors.black,
+        ),
+
+        Container(
+          color: constants.appMediumBlack,
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+
+
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 30,
+                      child: VerticalDivider(color: constants.appYellow, width:4, thickness:4)),
+
+                    // title
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text("En iyi box office", style: constants.appTextFont(style: TextStyle(color: Colors.white, fontSize: 18)),),
+                    ),
+
+                    Spacer(),
+
+                    TextButton(
+                      onPressed: (){},
+                       child: Text("TÜMÜNÜ GÖSTER", style: constants.appTextFont(style: TextStyle(color: Colors.lightBlue))))
+
+
+                  ],
+                ),
+
+                Padding(
+                  padding:  EdgeInsets.only(left: 8.0),
+                  child: Text("8- 10 Temmuz Haftası", style: constants.appTextFont(style:  TextStyle(color: Colors.white70, fontSize: 14))),
+                ),
+
+                Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: Column(
+                      children: [
+                        MainScreenHomeViewBesBoxOfficeItem(notionNumber: 1, movieName: "lorem ipsum dolor sit amet,", revenue: 11.2),
+                        MainScreenHomeViewBesBoxOfficeItem(notionNumber: 2, movieName: "lorem ipsum dolor sit ,", revenue: 11),
+                        MainScreenHomeViewBesBoxOfficeItem(notionNumber: 3, movieName: "lorem ipsum dolor sit ,", revenue: 11),
+                        MainScreenHomeViewBesBoxOfficeItem(notionNumber: 3, movieName: "lorem ipsum dolor sit ,", revenue: 11),
+                        MainScreenHomeViewBesBoxOfficeItem(notionNumber: 3, movieName: "lorem ipsum dolor sit amet asdcoa asdjnadjndaj asdandjka ,", revenue: 11),
+                        MainScreenHomeViewBesBoxOfficeItem(notionNumber: 3, movieName: "lorem ipsum dolor sit ,", revenue: 11),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        )
+
+      ],
+
+    );      
+  }
+}
+
+
+
