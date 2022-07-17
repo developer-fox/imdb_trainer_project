@@ -3,14 +3,14 @@ import "package:flutter/material.dart";
 
 import "../../core/constants.dart" as constants;
 
-class MainScreenHomeViewFeaturedPhotosWidget extends StatefulWidget {
+class MainScreenHomeViewDiscoverVoteNowWidget extends StatefulWidget {
 
   List<String> photoUrls;
   String description;
   bool isPhotosCountEven;
 
 
-  MainScreenHomeViewFeaturedPhotosWidget({
+  MainScreenHomeViewDiscoverVoteNowWidget({
     Key? key,
     required this.photoUrls,
     required this.description,
@@ -18,10 +18,10 @@ class MainScreenHomeViewFeaturedPhotosWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MainScreenHomeViewFeaturedPhotosWidget> createState() => _MainScreenHomeViewFeaturedPhotosWidget();
+  State<MainScreenHomeViewDiscoverVoteNowWidget> createState() => _MainScreenHomeViewDiscoverVoteNowWidget();
 }
 
-class _MainScreenHomeViewFeaturedPhotosWidget extends State<MainScreenHomeViewFeaturedPhotosWidget> {
+class _MainScreenHomeViewDiscoverVoteNowWidget extends State<MainScreenHomeViewDiscoverVoteNowWidget> {
   @override
   Widget build(BuildContext context) {
     
@@ -58,8 +58,8 @@ class _MainScreenHomeViewFeaturedPhotosWidget extends State<MainScreenHomeViewFe
                     width: constants.scaler(context,22).width,
                     child: Row(
                       children: [
-                        Icon(Icons.photo_library, color: Colors.white, size: 18),
-                        Text("Photos", style: constants.appTextFont(style: TextStyle(color:Colors.white, fontSize: 16)),),
+                        Icon(Icons.format_list_bulleted_outlined, color: Colors.white, size: 18),
+                        Text("Vote Now", style: constants.appTextFont(style: TextStyle(color:Colors.white, fontSize: 16)),),
                         
                       ],
                     ),

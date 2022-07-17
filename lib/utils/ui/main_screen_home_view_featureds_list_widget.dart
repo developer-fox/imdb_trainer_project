@@ -65,8 +65,8 @@ class _MainScreenHomeViewFeaturedsListWidgetState extends State<MainScreenHomeVi
                     width: constants.scaler(context,16).width,
                     child: Row(
                       children: [
-                        Icon(Icons.format_list_bulleted_outlined, color: Colors.white, size: 22),
-                        Text("List", style: constants.appTextFont(style: TextStyle(color:Colors.white, fontSize: 20)),),
+                        Icon(Icons.format_list_bulleted_outlined, color: Colors.white, size: 18),
+                        Text("List", style: constants.appTextFont(style: TextStyle(color:Colors.white, fontSize: 16)),),
                         
                       ],
                     ),
