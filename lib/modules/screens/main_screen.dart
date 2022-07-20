@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:imdb_trainer_project/modules/views/main_screen_home_view.dart';
+import 'package:imdb_trainer_project/modules/views/main_screen_search_view.dart';
 import '../../core/constants.dart' as constants;
 
 //* this file includes materialn screen(scaffold) widget
@@ -17,11 +18,17 @@ class _MainScreenState extends State<MainScreen> {
 
   int bottomNavigationBarCurrentIndex =0;
 
-  var views = [MainScreenHomeView(),MainScreenHomeView(), MainScreenHomeView(), MainScreenHomeView()];
-
-
+  var views = [
+    MainScreenHomeView(),
+    MainScreenSearchView(),
+    MainScreenHomeView(), 
+    MainScreenHomeView()
+    ];
+  
   @override
   Widget build(BuildContext context) {
+
+
     return SafeArea(
       child: Scaffold(
           body: views[bottomNavigationBarCurrentIndex],

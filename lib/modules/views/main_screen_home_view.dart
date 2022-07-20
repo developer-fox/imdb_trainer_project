@@ -3,6 +3,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:imdb_trainer_project/modules/screens/movie_details_screen.dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_bestBoxOffice_item.dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_bornToday_widget.dart';
 import 'package:imdb_trainer_project/utils/ui/main_screen_home_view_carousel_slider_item_widget.dart';
@@ -75,19 +76,24 @@ class _TopCarouselSliderState extends State<TopCarouselSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: [
-        carouselWidget,
-        carouselWidget,
-        carouselWidget,
-        carouselWidget,
-      ],
-      options: CarouselOptions(
-        height: 300,
-        viewportFraction: 1,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 2),
-
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: ((context) => MovieDetailsScreen())));
+      },
+      child: CarouselSlider(
+        items: [
+          carouselWidget,
+          carouselWidget,
+          carouselWidget,
+          carouselWidget,
+        ],
+        options: CarouselOptions(
+          height: 300,
+          viewportFraction: 1,
+          autoPlay: true,
+          autoPlayInterval: const Duration(seconds: 2),
+    
+        ),
       ),
     );
   }
